@@ -167,6 +167,10 @@ public class UpdateParser implements IUpdateParser {
 						}
 					}
 				} else {
+					if (relationship.isToMany() && valueNode.isNull()) {
+						throw new LinkRestException(Status.BAD_REQUEST,
+								"Unexpected 'null' for a to-many relationship: " + relationship.getName());
+					}
 					addRelatedObject(update, relationship, extractValue(valueNode, targetJdbcType));
 				}
 
