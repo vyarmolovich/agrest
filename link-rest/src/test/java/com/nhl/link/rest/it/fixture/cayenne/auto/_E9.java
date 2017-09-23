@@ -1,6 +1,10 @@
 package com.nhl.link.rest.it.fixture.cayenne.auto;
 
-import org.apache.cayenne.CayenneDataObject;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import org.apache.cayenne.BaseDataObject;
 import org.apache.cayenne.exp.Property;
 
 import com.nhl.link.rest.it.fixture.cayenne.E8;
@@ -11,13 +15,16 @@ import com.nhl.link.rest.it.fixture.cayenne.E8;
  * since it may be overwritten next time code is regenerated.
  * If you need to make any customizations, please use subclass.
  */
-public abstract class _E9 extends CayenneDataObject {
+public abstract class _E9 extends BaseDataObject {
 
     private static final long serialVersionUID = 1L; 
 
     public static final String E8_ID_PK_COLUMN = "e8_id";
 
     public static final Property<E8> E8 = Property.create("e8", E8.class);
+
+
+    protected Object e8;
 
     public void setE8(E8 e8) {
         setToOneTarget("e8", e8, true);
@@ -27,5 +34,53 @@ public abstract class _E9 extends CayenneDataObject {
         return (E8)readProperty("e8");
     }
 
+    @Override
+    public Object readPropertyDirectly(String propName) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch(propName) {
+            case "e8":
+                return this.e8;
+            default:
+                return super.readPropertyDirectly(propName);
+        }
+    }
+
+    @Override
+    public void writePropertyDirectly(String propName, Object val) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch (propName) {
+            case "e8":
+                this.e8 = val;
+                break;
+            default:
+                super.writePropertyDirectly(propName, val);
+        }
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        writeSerialized(out);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        readSerialized(in);
+    }
+
+    @Override
+    protected void writeState(ObjectOutputStream out) throws IOException {
+        super.writeState(out);
+        out.writeObject(this.e8);
+    }
+
+    @Override
+    protected void readState(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        super.readState(in);
+        this.e8 = in.readObject();
+    }
 
 }

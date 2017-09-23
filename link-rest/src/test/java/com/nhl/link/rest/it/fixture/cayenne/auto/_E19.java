@@ -1,12 +1,15 @@
 package com.nhl.link.rest.it.fixture.cayenne.auto;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 
-import org.apache.cayenne.CayenneDataObject;
+import org.apache.cayenne.BaseDataObject;
 import org.apache.cayenne.exp.Property;
 
 /**
@@ -15,7 +18,7 @@ import org.apache.cayenne.exp.Property;
  * since it may be overwritten next time code is regenerated.
  * If you need to make any customizations, please use subclass.
  */
-public abstract class _E19 extends CayenneDataObject {
+public abstract class _E19 extends BaseDataObject {
 
     private static final long serialVersionUID = 1L; 
 
@@ -45,173 +48,462 @@ public abstract class _E19 extends CayenneDataObject {
     public static final Property<Short> SHORT_OBJECT = Property.create("shortObject", Short.class);
     public static final Property<Short> SHORT_PRIMITIVE = Property.create("shortPrimitive", Short.class);
 
+    protected BigDecimal bigDecimal;
+    protected BigInteger bigInteger;
+    protected Boolean booleanObject;
+    protected boolean booleanPrimitive;
+    protected Byte byteObject;
+    protected byte bytePrimitive;
+    protected Date cDate;
+    protected String cString;
+    protected Time cTime;
+    protected Timestamp cTimestamp;
+    protected Character charObject;
+    protected char charPrimitive;
+    protected Double doubleObject;
+    protected double doublePrimitive;
+    protected Float floatObject;
+    protected float floatPrimitive;
+    protected byte[] guid;
+    protected Integer intObject;
+    protected int intPrimitive;
+    protected Long longObject;
+    protected long longPrimitive;
+    protected Short shortObject;
+    protected short shortPrimitive;
+
+
     public void setBigDecimal(BigDecimal bigDecimal) {
-        writeProperty("bigDecimal", bigDecimal);
+        beforePropertyWrite("bigDecimal", this.bigDecimal, bigDecimal);
+        this.bigDecimal = bigDecimal;
     }
+
     public BigDecimal getBigDecimal() {
-        return (BigDecimal)readProperty("bigDecimal");
+        beforePropertyRead("bigDecimal");
+        return this.bigDecimal;
     }
 
     public void setBigInteger(BigInteger bigInteger) {
-        writeProperty("bigInteger", bigInteger);
+        beforePropertyWrite("bigInteger", this.bigInteger, bigInteger);
+        this.bigInteger = bigInteger;
     }
+
     public BigInteger getBigInteger() {
-        return (BigInteger)readProperty("bigInteger");
+        beforePropertyRead("bigInteger");
+        return this.bigInteger;
     }
 
     public void setBooleanObject(Boolean booleanObject) {
-        writeProperty("booleanObject", booleanObject);
+        beforePropertyWrite("booleanObject", this.booleanObject, booleanObject);
+        this.booleanObject = booleanObject;
     }
+
     public Boolean getBooleanObject() {
-        return (Boolean)readProperty("booleanObject");
+        beforePropertyRead("booleanObject");
+        return this.booleanObject;
     }
 
     public void setBooleanPrimitive(boolean booleanPrimitive) {
-        writeProperty("booleanPrimitive", booleanPrimitive);
+        beforePropertyWrite("booleanPrimitive", this.booleanPrimitive, booleanPrimitive);
+        this.booleanPrimitive = booleanPrimitive;
     }
+
 	public boolean isBooleanPrimitive() {
-        Boolean value = (Boolean)readProperty("booleanPrimitive");
-        return (value != null) ? value.booleanValue() : false;
+        beforePropertyRead("booleanPrimitive");
+        return this.booleanPrimitive;
     }
 
     public void setByteObject(Byte byteObject) {
-        writeProperty("byteObject", byteObject);
+        beforePropertyWrite("byteObject", this.byteObject, byteObject);
+        this.byteObject = byteObject;
     }
+
     public Byte getByteObject() {
-        return (Byte)readProperty("byteObject");
+        beforePropertyRead("byteObject");
+        return this.byteObject;
     }
 
     public void setBytePrimitive(byte bytePrimitive) {
-        writeProperty("bytePrimitive", bytePrimitive);
+        beforePropertyWrite("bytePrimitive", this.bytePrimitive, bytePrimitive);
+        this.bytePrimitive = bytePrimitive;
     }
+
     public byte getBytePrimitive() {
-        Object value = readProperty("bytePrimitive");
-        return (value != null) ? (Byte) value : 0;
+        beforePropertyRead("bytePrimitive");
+        return this.bytePrimitive;
     }
 
     public void setCDate(Date cDate) {
-        writeProperty("cDate", cDate);
+        beforePropertyWrite("cDate", this.cDate, cDate);
+        this.cDate = cDate;
     }
+
     public Date getCDate() {
-        return (Date)readProperty("cDate");
+        beforePropertyRead("cDate");
+        return this.cDate;
     }
 
     public void setCString(String cString) {
-        writeProperty("cString", cString);
+        beforePropertyWrite("cString", this.cString, cString);
+        this.cString = cString;
     }
+
     public String getCString() {
-        return (String)readProperty("cString");
+        beforePropertyRead("cString");
+        return this.cString;
     }
 
     public void setCTime(Time cTime) {
-        writeProperty("cTime", cTime);
+        beforePropertyWrite("cTime", this.cTime, cTime);
+        this.cTime = cTime;
     }
+
     public Time getCTime() {
-        return (Time)readProperty("cTime");
+        beforePropertyRead("cTime");
+        return this.cTime;
     }
 
     public void setCTimestamp(Timestamp cTimestamp) {
-        writeProperty("cTimestamp", cTimestamp);
+        beforePropertyWrite("cTimestamp", this.cTimestamp, cTimestamp);
+        this.cTimestamp = cTimestamp;
     }
+
     public Timestamp getCTimestamp() {
-        return (Timestamp)readProperty("cTimestamp");
+        beforePropertyRead("cTimestamp");
+        return this.cTimestamp;
     }
 
     public void setCharObject(Character charObject) {
-        writeProperty("charObject", charObject);
+        beforePropertyWrite("charObject", this.charObject, charObject);
+        this.charObject = charObject;
     }
+
     public Character getCharObject() {
-        return (Character)readProperty("charObject");
+        beforePropertyRead("charObject");
+        return this.charObject;
     }
 
     public void setCharPrimitive(char charPrimitive) {
-        writeProperty("charPrimitive", charPrimitive);
+        beforePropertyWrite("charPrimitive", this.charPrimitive, charPrimitive);
+        this.charPrimitive = charPrimitive;
     }
+
     public char getCharPrimitive() {
-        Object value = readProperty("charPrimitive");
-        return (value != null) ? (Character) value : 0;
+        beforePropertyRead("charPrimitive");
+        return this.charPrimitive;
     }
 
     public void setDoubleObject(Double doubleObject) {
-        writeProperty("doubleObject", doubleObject);
+        beforePropertyWrite("doubleObject", this.doubleObject, doubleObject);
+        this.doubleObject = doubleObject;
     }
+
     public Double getDoubleObject() {
-        return (Double)readProperty("doubleObject");
+        beforePropertyRead("doubleObject");
+        return this.doubleObject;
     }
 
     public void setDoublePrimitive(double doublePrimitive) {
-        writeProperty("doublePrimitive", doublePrimitive);
+        beforePropertyWrite("doublePrimitive", this.doublePrimitive, doublePrimitive);
+        this.doublePrimitive = doublePrimitive;
     }
+
     public double getDoublePrimitive() {
-        Object value = readProperty("doublePrimitive");
-        return (value != null) ? (Double) value : 0;
+        beforePropertyRead("doublePrimitive");
+        return this.doublePrimitive;
     }
 
     public void setFloatObject(Float floatObject) {
-        writeProperty("floatObject", floatObject);
+        beforePropertyWrite("floatObject", this.floatObject, floatObject);
+        this.floatObject = floatObject;
     }
+
     public Float getFloatObject() {
-        return (Float)readProperty("floatObject");
+        beforePropertyRead("floatObject");
+        return this.floatObject;
     }
 
     public void setFloatPrimitive(float floatPrimitive) {
-        writeProperty("floatPrimitive", floatPrimitive);
+        beforePropertyWrite("floatPrimitive", this.floatPrimitive, floatPrimitive);
+        this.floatPrimitive = floatPrimitive;
     }
+
     public float getFloatPrimitive() {
-        Object value = readProperty("floatPrimitive");
-        return (value != null) ? (Float) value : 0;
+        beforePropertyRead("floatPrimitive");
+        return this.floatPrimitive;
     }
 
     public void setGuid(byte[] guid) {
-        writeProperty("guid", guid);
+        beforePropertyWrite("guid", this.guid, guid);
+        this.guid = guid;
     }
+
     public byte[] getGuid() {
-        return (byte[])readProperty("guid");
+        beforePropertyRead("guid");
+        return this.guid;
     }
 
     public void setIntObject(Integer intObject) {
-        writeProperty("intObject", intObject);
+        beforePropertyWrite("intObject", this.intObject, intObject);
+        this.intObject = intObject;
     }
+
     public Integer getIntObject() {
-        return (Integer)readProperty("intObject");
+        beforePropertyRead("intObject");
+        return this.intObject;
     }
 
     public void setIntPrimitive(int intPrimitive) {
-        writeProperty("intPrimitive", intPrimitive);
+        beforePropertyWrite("intPrimitive", this.intPrimitive, intPrimitive);
+        this.intPrimitive = intPrimitive;
     }
+
     public int getIntPrimitive() {
-        Object value = readProperty("intPrimitive");
-        return (value != null) ? (Integer) value : 0;
+        beforePropertyRead("intPrimitive");
+        return this.intPrimitive;
     }
 
     public void setLongObject(Long longObject) {
-        writeProperty("longObject", longObject);
+        beforePropertyWrite("longObject", this.longObject, longObject);
+        this.longObject = longObject;
     }
+
     public Long getLongObject() {
-        return (Long)readProperty("longObject");
+        beforePropertyRead("longObject");
+        return this.longObject;
     }
 
     public void setLongPrimitive(long longPrimitive) {
-        writeProperty("longPrimitive", longPrimitive);
+        beforePropertyWrite("longPrimitive", this.longPrimitive, longPrimitive);
+        this.longPrimitive = longPrimitive;
     }
+
     public long getLongPrimitive() {
-        Object value = readProperty("longPrimitive");
-        return (value != null) ? (Long) value : 0;
+        beforePropertyRead("longPrimitive");
+        return this.longPrimitive;
     }
 
     public void setShortObject(Short shortObject) {
-        writeProperty("shortObject", shortObject);
+        beforePropertyWrite("shortObject", this.shortObject, shortObject);
+        this.shortObject = shortObject;
     }
+
     public Short getShortObject() {
-        return (Short)readProperty("shortObject");
+        beforePropertyRead("shortObject");
+        return this.shortObject;
     }
 
     public void setShortPrimitive(short shortPrimitive) {
-        writeProperty("shortPrimitive", shortPrimitive);
+        beforePropertyWrite("shortPrimitive", this.shortPrimitive, shortPrimitive);
+        this.shortPrimitive = shortPrimitive;
     }
+
     public short getShortPrimitive() {
-        Object value = readProperty("shortPrimitive");
-        return (value != null) ? (Short) value : 0;
+        beforePropertyRead("shortPrimitive");
+        return this.shortPrimitive;
+    }
+
+    @Override
+    public Object readPropertyDirectly(String propName) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch(propName) {
+            case "bigDecimal":
+                return this.bigDecimal;
+            case "bigInteger":
+                return this.bigInteger;
+            case "booleanObject":
+                return this.booleanObject;
+            case "booleanPrimitive":
+                return this.booleanPrimitive;
+            case "byteObject":
+                return this.byteObject;
+            case "bytePrimitive":
+                return this.bytePrimitive;
+            case "cDate":
+                return this.cDate;
+            case "cString":
+                return this.cString;
+            case "cTime":
+                return this.cTime;
+            case "cTimestamp":
+                return this.cTimestamp;
+            case "charObject":
+                return this.charObject;
+            case "charPrimitive":
+                return this.charPrimitive;
+            case "doubleObject":
+                return this.doubleObject;
+            case "doublePrimitive":
+                return this.doublePrimitive;
+            case "floatObject":
+                return this.floatObject;
+            case "floatPrimitive":
+                return this.floatPrimitive;
+            case "guid":
+                return this.guid;
+            case "intObject":
+                return this.intObject;
+            case "intPrimitive":
+                return this.intPrimitive;
+            case "longObject":
+                return this.longObject;
+            case "longPrimitive":
+                return this.longPrimitive;
+            case "shortObject":
+                return this.shortObject;
+            case "shortPrimitive":
+                return this.shortPrimitive;
+            default:
+                return super.readPropertyDirectly(propName);
+        }
+    }
+
+    @Override
+    public void writePropertyDirectly(String propName, Object val) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch (propName) {
+            case "bigDecimal":
+                this.bigDecimal = (BigDecimal)val;
+                break;
+            case "bigInteger":
+                this.bigInteger = (BigInteger)val;
+                break;
+            case "booleanObject":
+                this.booleanObject = (Boolean)val;
+                break;
+            case "booleanPrimitive":
+                this.booleanPrimitive = val == null ? false : (Boolean)val;
+                break;
+            case "byteObject":
+                this.byteObject = (Byte)val;
+                break;
+            case "bytePrimitive":
+                this.bytePrimitive = val == null ? 0 : (Byte)val;
+                break;
+            case "cDate":
+                this.cDate = (Date)val;
+                break;
+            case "cString":
+                this.cString = (String)val;
+                break;
+            case "cTime":
+                this.cTime = (Time)val;
+                break;
+            case "cTimestamp":
+                this.cTimestamp = (Timestamp)val;
+                break;
+            case "charObject":
+                this.charObject = (Character)val;
+                break;
+            case "charPrimitive":
+                this.charPrimitive = val == null ? 0 : (Character)val;
+                break;
+            case "doubleObject":
+                this.doubleObject = (Double)val;
+                break;
+            case "doublePrimitive":
+                this.doublePrimitive = val == null ? 0 : (Double)val;
+                break;
+            case "floatObject":
+                this.floatObject = (Float)val;
+                break;
+            case "floatPrimitive":
+                this.floatPrimitive = val == null ? 0 : (Float)val;
+                break;
+            case "guid":
+                this.guid = (byte[])val;
+                break;
+            case "intObject":
+                this.intObject = (Integer)val;
+                break;
+            case "intPrimitive":
+                this.intPrimitive = val == null ? 0 : (Integer)val;
+                break;
+            case "longObject":
+                this.longObject = (Long)val;
+                break;
+            case "longPrimitive":
+                this.longPrimitive = val == null ? 0 : (Long)val;
+                break;
+            case "shortObject":
+                this.shortObject = (Short)val;
+                break;
+            case "shortPrimitive":
+                this.shortPrimitive = val == null ? 0 : (Short)val;
+                break;
+            default:
+                super.writePropertyDirectly(propName, val);
+        }
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        writeSerialized(out);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        readSerialized(in);
+    }
+
+    @Override
+    protected void writeState(ObjectOutputStream out) throws IOException {
+        super.writeState(out);
+        out.writeObject(this.bigDecimal);
+        out.writeObject(this.bigInteger);
+        out.writeObject(this.booleanObject);
+        out.writeBoolean(this.booleanPrimitive);
+        out.writeObject(this.byteObject);
+        out.writeByte(this.bytePrimitive);
+        out.writeObject(this.cDate);
+        out.writeObject(this.cString);
+        out.writeObject(this.cTime);
+        out.writeObject(this.cTimestamp);
+        out.writeObject(this.charObject);
+        out.writeChar(this.charPrimitive);
+        out.writeObject(this.doubleObject);
+        out.writeDouble(this.doublePrimitive);
+        out.writeObject(this.floatObject);
+        out.writeFloat(this.floatPrimitive);
+        out.writeObject(this.guid);
+        out.writeObject(this.intObject);
+        out.writeInt(this.intPrimitive);
+        out.writeObject(this.longObject);
+        out.writeLong(this.longPrimitive);
+        out.writeObject(this.shortObject);
+        out.writeShort(this.shortPrimitive);
+    }
+
+    @Override
+    protected void readState(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        super.readState(in);
+        this.bigDecimal = (BigDecimal)in.readObject();
+        this.bigInteger = (BigInteger)in.readObject();
+        this.booleanObject = (Boolean)in.readObject();
+        this.booleanPrimitive = in.readBoolean();
+        this.byteObject = (Byte)in.readObject();
+        this.bytePrimitive = in.readByte();
+        this.cDate = (Date)in.readObject();
+        this.cString = (String)in.readObject();
+        this.cTime = (Time)in.readObject();
+        this.cTimestamp = (Timestamp)in.readObject();
+        this.charObject = (Character)in.readObject();
+        this.charPrimitive = in.readChar();
+        this.doubleObject = (Double)in.readObject();
+        this.doublePrimitive = in.readDouble();
+        this.floatObject = (Float)in.readObject();
+        this.floatPrimitive = in.readFloat();
+        this.guid = (byte[])in.readObject();
+        this.intObject = (Integer)in.readObject();
+        this.intPrimitive = in.readInt();
+        this.longObject = (Long)in.readObject();
+        this.longPrimitive = in.readLong();
+        this.shortObject = (Short)in.readObject();
+        this.shortPrimitive = in.readShort();
     }
 
 }

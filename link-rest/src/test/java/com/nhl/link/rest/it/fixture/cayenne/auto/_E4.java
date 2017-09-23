@@ -1,9 +1,12 @@
 package com.nhl.link.rest.it.fixture.cayenne.auto;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import org.apache.cayenne.CayenneDataObject;
+import org.apache.cayenne.BaseDataObject;
 import org.apache.cayenne.exp.Property;
 
 /**
@@ -12,7 +15,7 @@ import org.apache.cayenne.exp.Property;
  * since it may be overwritten next time code is regenerated.
  * If you need to make any customizations, please use subclass.
  */
-public abstract class _E4 extends CayenneDataObject {
+public abstract class _E4 extends BaseDataObject {
 
     private static final long serialVersionUID = 1L; 
 
@@ -26,53 +29,174 @@ public abstract class _E4 extends CayenneDataObject {
     public static final Property<Date> C_TIMESTAMP = Property.create("cTimestamp", Date.class);
     public static final Property<String> C_VARCHAR = Property.create("cVarchar", String.class);
 
+    protected Boolean cBoolean;
+    protected Date cDate;
+    protected BigDecimal cDecimal;
+    protected Integer cInt;
+    protected Date cTime;
+    protected Date cTimestamp;
+    protected String cVarchar;
+
+
     public void setCBoolean(Boolean cBoolean) {
-        writeProperty("cBoolean", cBoolean);
+        beforePropertyWrite("cBoolean", this.cBoolean, cBoolean);
+        this.cBoolean = cBoolean;
     }
+
     public Boolean getCBoolean() {
-        return (Boolean)readProperty("cBoolean");
+        beforePropertyRead("cBoolean");
+        return this.cBoolean;
     }
 
     public void setCDate(Date cDate) {
-        writeProperty("cDate", cDate);
+        beforePropertyWrite("cDate", this.cDate, cDate);
+        this.cDate = cDate;
     }
+
     public Date getCDate() {
-        return (Date)readProperty("cDate");
+        beforePropertyRead("cDate");
+        return this.cDate;
     }
 
     public void setCDecimal(BigDecimal cDecimal) {
-        writeProperty("cDecimal", cDecimal);
+        beforePropertyWrite("cDecimal", this.cDecimal, cDecimal);
+        this.cDecimal = cDecimal;
     }
+
     public BigDecimal getCDecimal() {
-        return (BigDecimal)readProperty("cDecimal");
+        beforePropertyRead("cDecimal");
+        return this.cDecimal;
     }
 
     public void setCInt(Integer cInt) {
-        writeProperty("cInt", cInt);
+        beforePropertyWrite("cInt", this.cInt, cInt);
+        this.cInt = cInt;
     }
+
     public Integer getCInt() {
-        return (Integer)readProperty("cInt");
+        beforePropertyRead("cInt");
+        return this.cInt;
     }
 
     public void setCTime(Date cTime) {
-        writeProperty("cTime", cTime);
+        beforePropertyWrite("cTime", this.cTime, cTime);
+        this.cTime = cTime;
     }
+
     public Date getCTime() {
-        return (Date)readProperty("cTime");
+        beforePropertyRead("cTime");
+        return this.cTime;
     }
 
     public void setCTimestamp(Date cTimestamp) {
-        writeProperty("cTimestamp", cTimestamp);
+        beforePropertyWrite("cTimestamp", this.cTimestamp, cTimestamp);
+        this.cTimestamp = cTimestamp;
     }
+
     public Date getCTimestamp() {
-        return (Date)readProperty("cTimestamp");
+        beforePropertyRead("cTimestamp");
+        return this.cTimestamp;
     }
 
     public void setCVarchar(String cVarchar) {
-        writeProperty("cVarchar", cVarchar);
+        beforePropertyWrite("cVarchar", this.cVarchar, cVarchar);
+        this.cVarchar = cVarchar;
     }
+
     public String getCVarchar() {
-        return (String)readProperty("cVarchar");
+        beforePropertyRead("cVarchar");
+        return this.cVarchar;
+    }
+
+    @Override
+    public Object readPropertyDirectly(String propName) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch(propName) {
+            case "cBoolean":
+                return this.cBoolean;
+            case "cDate":
+                return this.cDate;
+            case "cDecimal":
+                return this.cDecimal;
+            case "cInt":
+                return this.cInt;
+            case "cTime":
+                return this.cTime;
+            case "cTimestamp":
+                return this.cTimestamp;
+            case "cVarchar":
+                return this.cVarchar;
+            default:
+                return super.readPropertyDirectly(propName);
+        }
+    }
+
+    @Override
+    public void writePropertyDirectly(String propName, Object val) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch (propName) {
+            case "cBoolean":
+                this.cBoolean = (Boolean)val;
+                break;
+            case "cDate":
+                this.cDate = (Date)val;
+                break;
+            case "cDecimal":
+                this.cDecimal = (BigDecimal)val;
+                break;
+            case "cInt":
+                this.cInt = (Integer)val;
+                break;
+            case "cTime":
+                this.cTime = (Date)val;
+                break;
+            case "cTimestamp":
+                this.cTimestamp = (Date)val;
+                break;
+            case "cVarchar":
+                this.cVarchar = (String)val;
+                break;
+            default:
+                super.writePropertyDirectly(propName, val);
+        }
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        writeSerialized(out);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        readSerialized(in);
+    }
+
+    @Override
+    protected void writeState(ObjectOutputStream out) throws IOException {
+        super.writeState(out);
+        out.writeObject(this.cBoolean);
+        out.writeObject(this.cDate);
+        out.writeObject(this.cDecimal);
+        out.writeObject(this.cInt);
+        out.writeObject(this.cTime);
+        out.writeObject(this.cTimestamp);
+        out.writeObject(this.cVarchar);
+    }
+
+    @Override
+    protected void readState(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        super.readState(in);
+        this.cBoolean = (Boolean)in.readObject();
+        this.cDate = (Date)in.readObject();
+        this.cDecimal = (BigDecimal)in.readObject();
+        this.cInt = (Integer)in.readObject();
+        this.cTime = (Date)in.readObject();
+        this.cTimestamp = (Date)in.readObject();
+        this.cVarchar = (String)in.readObject();
     }
 
 }

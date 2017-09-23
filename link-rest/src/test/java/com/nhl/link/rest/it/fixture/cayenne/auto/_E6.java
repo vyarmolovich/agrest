@@ -1,6 +1,10 @@
 package com.nhl.link.rest.it.fixture.cayenne.auto;
 
-import org.apache.cayenne.CayenneDataObject;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import org.apache.cayenne.BaseDataObject;
 import org.apache.cayenne.exp.Property;
 
 /**
@@ -9,7 +13,7 @@ import org.apache.cayenne.exp.Property;
  * since it may be overwritten next time code is regenerated.
  * If you need to make any customizations, please use subclass.
  */
-public abstract class _E6 extends CayenneDataObject {
+public abstract class _E6 extends BaseDataObject {
 
     private static final long serialVersionUID = 1L; 
 
@@ -17,11 +21,66 @@ public abstract class _E6 extends CayenneDataObject {
 
     public static final Property<String> CHAR_COLUMN = Property.create("charColumn", String.class);
 
+    protected String charColumn;
+
+
     public void setCharColumn(String charColumn) {
-        writeProperty("charColumn", charColumn);
+        beforePropertyWrite("charColumn", this.charColumn, charColumn);
+        this.charColumn = charColumn;
     }
+
     public String getCharColumn() {
-        return (String)readProperty("charColumn");
+        beforePropertyRead("charColumn");
+        return this.charColumn;
+    }
+
+    @Override
+    public Object readPropertyDirectly(String propName) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch(propName) {
+            case "charColumn":
+                return this.charColumn;
+            default:
+                return super.readPropertyDirectly(propName);
+        }
+    }
+
+    @Override
+    public void writePropertyDirectly(String propName, Object val) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch (propName) {
+            case "charColumn":
+                this.charColumn = (String)val;
+                break;
+            default:
+                super.writePropertyDirectly(propName, val);
+        }
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        writeSerialized(out);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        readSerialized(in);
+    }
+
+    @Override
+    protected void writeState(ObjectOutputStream out) throws IOException {
+        super.writeState(out);
+        out.writeObject(this.charColumn);
+    }
+
+    @Override
+    protected void readState(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        super.readState(in);
+        this.charColumn = (String)in.readObject();
     }
 
 }

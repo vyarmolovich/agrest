@@ -1,6 +1,10 @@
 package com.nhl.link.rest.it.fixture.cayenne.auto;
 
-import org.apache.cayenne.CayenneDataObject;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import org.apache.cayenne.BaseDataObject;
 import org.apache.cayenne.exp.Property;
 
 import com.nhl.link.rest.it.fixture.cayenne.E17;
@@ -11,7 +15,7 @@ import com.nhl.link.rest.it.fixture.cayenne.E17;
  * since it may be overwritten next time code is regenerated.
  * If you need to make any customizations, please use subclass.
  */
-public abstract class _E18 extends CayenneDataObject {
+public abstract class _E18 extends BaseDataObject {
 
     private static final long serialVersionUID = 1L; 
 
@@ -20,11 +24,18 @@ public abstract class _E18 extends CayenneDataObject {
     public static final Property<String> NAME = Property.create("name", String.class);
     public static final Property<E17> E17 = Property.create("e17", E17.class);
 
+    protected String name;
+
+    protected Object e17;
+
     public void setName(String name) {
-        writeProperty("name", name);
+        beforePropertyWrite("name", this.name, name);
+        this.name = name;
     }
+
     public String getName() {
-        return (String)readProperty("name");
+        beforePropertyRead("name");
+        return this.name;
     }
 
     public void setE17(E17 e17) {
@@ -35,5 +46,60 @@ public abstract class _E18 extends CayenneDataObject {
         return (E17)readProperty("e17");
     }
 
+    @Override
+    public Object readPropertyDirectly(String propName) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch(propName) {
+            case "name":
+                return this.name;
+            case "e17":
+                return this.e17;
+            default:
+                return super.readPropertyDirectly(propName);
+        }
+    }
+
+    @Override
+    public void writePropertyDirectly(String propName, Object val) {
+        if(propName == null) {
+            throw new IllegalArgumentException();
+        }
+
+        switch (propName) {
+            case "name":
+                this.name = (String)val;
+                break;
+            case "e17":
+                this.e17 = val;
+                break;
+            default:
+                super.writePropertyDirectly(propName, val);
+        }
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        writeSerialized(out);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        readSerialized(in);
+    }
+
+    @Override
+    protected void writeState(ObjectOutputStream out) throws IOException {
+        super.writeState(out);
+        out.writeObject(this.name);
+        out.writeObject(this.e17);
+    }
+
+    @Override
+    protected void readState(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        super.readState(in);
+        this.name = (String)in.readObject();
+        this.e17 = in.readObject();
+    }
 
 }
