@@ -1,9 +1,11 @@
 package io.swagger.codegen;
 
 
+import org.openapitools.codegen.CodegenOperation;
+import org.openapitools.codegen.CodegenParameter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class LinkRestCodegenOperation extends CodegenOperation {

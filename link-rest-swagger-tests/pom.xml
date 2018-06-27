@@ -72,9 +72,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>io.swagger</groupId>
-                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>${swagger-codegen-maven-plugin-version}</version>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -82,7 +82,7 @@
                         </goals>
                         <configuration>
                             <inputSpec>${swagger-spec}</inputSpec>
-                            <language>io.swagger.codegen.languages.LinkRestServerCodegen</language>
+                            <generatorName>io.swagger.codegen.languages.LinkRestServerCodegen</generatorName>
                             <output>${project.basedir}</output>
                             <apiPackage>${base-package}.swagger.api.v${schema-version}.service</apiPackage>
                             <modelPackage>${base-package}.it.fixture.cayenne</modelPackage>

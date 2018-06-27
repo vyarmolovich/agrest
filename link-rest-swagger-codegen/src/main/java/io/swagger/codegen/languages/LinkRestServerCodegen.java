@@ -1,13 +1,14 @@
 package io.swagger.codegen.languages;
 
-import io.swagger.codegen.CliOption;
-import io.swagger.codegen.CodegenModel;
-import io.swagger.codegen.CodegenOperation;
-import io.swagger.codegen.CodegenParameter;
-import io.swagger.codegen.CodegenProperty;
 import io.swagger.codegen.LinkRestCodegenOperation;
 import io.swagger.codegen.languages.features.LinkRestServerFeatures;
-import io.swagger.models.Operation;
+import io.swagger.v3.oas.models.Operation;
+import org.openapitools.codegen.CliOption;
+import org.openapitools.codegen.CodegenModel;
+import org.openapitools.codegen.CodegenOperation;
+import org.openapitools.codegen.CodegenParameter;
+import org.openapitools.codegen.CodegenProperty;
+import org.openapitools.codegen.languages.AbstractJavaJAXRSServerCodegen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,14 +98,17 @@ public class LinkRestServerCodegen extends AbstractJavaJAXRSServerCodegen implem
 
         Map<String, Object> operations = (Map<String, Object>) objsResult.get("operations");
 
-        if ( operations != null ) {
+        if ( operations != null && !models.isEmpty()) {
             @SuppressWarnings("unchecked")
             List<CodegenOperation> ops = (List<CodegenOperation>) operations.get("operation");
             List<LinkRestCodegenOperation> newOps = new ArrayList<LinkRestCodegenOperation>();
             for ( CodegenOperation operation : ops ) {
+                if (models.get(operation.baseName) == null) {
+                    continue;
+                }
+
                 // Removes container from response
                 operation.returnType = operation.baseName;
-
                 LinkRestCodegenOperation lrOperation = new LinkRestCodegenOperation(operation);
                 // Stores model properties to use them as constraints
                 populateModelAttributes(lrOperation);
