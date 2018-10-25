@@ -3,8 +3,8 @@ package io.agrest.constraints;
 import io.agrest.PathConstants;
 import io.agrest.meta.AgEntity;
 import io.agrest.meta.AgRelationship;
-import org.apache.cayenne.exp.Expression;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Expression;
+import io.agrest.backend.exp.Property;
 
 import java.util.List;
 import java.util.function.Function;

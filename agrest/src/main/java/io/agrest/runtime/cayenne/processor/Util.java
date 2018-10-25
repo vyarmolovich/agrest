@@ -3,11 +3,11 @@ package io.agrest.runtime.cayenne.processor;
 import io.agrest.AgException;
 import io.agrest.meta.AgAttribute;
 import io.agrest.meta.AgEntity;
-import org.apache.cayenne.ObjectContext;
-import org.apache.cayenne.exp.ExpressionFactory;
-import org.apache.cayenne.exp.parser.ASTEqual;
-import org.apache.cayenne.map.ObjEntity;
-import org.apache.cayenne.query.ObjectSelect;
+import io.agrest.backend.ObjectContext;
+import io.agrest.backend.exp.ExpressionFactory;
+import io.agrest.backend.exp.parser.ASTEqual;
+import io.agrest.backend.map.ObjEntity;
+import io.agrest.backend.query.ObjectSelect;
 
 import javax.ws.rs.core.Response.Status;
 import java.util.Map;

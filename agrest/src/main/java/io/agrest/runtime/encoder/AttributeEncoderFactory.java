@@ -27,7 +27,7 @@ import io.agrest.property.BeanPropertyReader;
 import io.agrest.property.IdPropertyReader;
 import io.agrest.property.PropertyBuilder;
 import io.agrest.property.PropertyReader;
-import org.apache.cayenne.DataObject;
+import io.agrest.backend.DataObject;
 
 public class AttributeEncoderFactory implements IAttributeEncoderFactory {
 

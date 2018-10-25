@@ -1,6 +1,6 @@
 package io.agrest.property;
 
-import org.apache.cayenne.DataObject;
+import io.agrest.backend.DataObject;
 
 public class DataObjectPropertyReader implements PropertyReader {
 

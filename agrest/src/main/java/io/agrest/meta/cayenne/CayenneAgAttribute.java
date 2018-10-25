@@ -2,8 +2,8 @@ package io.agrest.meta.cayenne;
 
 import io.agrest.meta.DefaultAgAttribute;
 import io.agrest.meta.AgPersistentAttribute;
-import org.apache.cayenne.map.ObjAttribute;
-import org.apache.cayenne.util.ToStringBuilder;
+import io.agrest.backend.map.ObjAttribute;
+import io.agrest.backend.util.ToStringBuilder;
 
 /**
  * @since 1.12

@@ -7,7 +7,7 @@ import java.util.Map;
 import io.agrest.meta.AgPersistentEntity;
 import io.agrest.meta.DefaultAgEntity;
 import io.agrest.meta.AgPersistentAttribute;
-import org.apache.cayenne.map.ObjEntity;
+import io.agrest.backend.map.ObjEntity;
 
 /**
  * @since 1.12

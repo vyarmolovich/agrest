@@ -7,7 +7,7 @@ import io.agrest.processor.Processor;
 import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.AgBuilder;
 import io.agrest.runtime.processor.select.SelectContext;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 
 import javax.ws.rs.core.UriInfo;
 import java.util.Collection;

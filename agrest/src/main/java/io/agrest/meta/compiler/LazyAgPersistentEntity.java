@@ -4,7 +4,7 @@ import io.agrest.meta.AgAttribute;
 import io.agrest.meta.AgPersistentAttribute;
 import io.agrest.meta.AgPersistentEntity;
 import io.agrest.meta.AgRelationship;
-import org.apache.cayenne.map.ObjEntity;
+import io.agrest.backend.map.ObjEntity;
 
 import java.util.Collection;
 import java.util.function.Supplier;

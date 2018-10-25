@@ -1,7 +1,7 @@
 package io.agrest.property;
 
-import org.apache.cayenne.ObjectId;
-import org.apache.cayenne.Persistent;
+import io.agrest.backend.ObjectId;
+import io.agrest.backend.Persistent;
 
 public class PersistentObjectIdPropertyReader implements PropertyReader {
 

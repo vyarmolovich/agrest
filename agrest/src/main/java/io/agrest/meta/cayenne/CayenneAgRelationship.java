@@ -6,9 +6,9 @@ import io.agrest.meta.AgEntity;
 import io.agrest.meta.AgPersistentRelationship;
 import io.agrest.parser.converter.JsonValueConverter;
 import io.agrest.property.PropertyReader;
-import org.apache.cayenne.map.DbJoin;
-import org.apache.cayenne.map.DbRelationship;
-import org.apache.cayenne.map.ObjRelationship;
+import io.agrest.backend.map.DbJoin;
+import io.agrest.backend.map.DbRelationship;
+import io.agrest.backend.map.ObjRelationship;
 
 import java.util.Collections;
 import java.util.HashMap;

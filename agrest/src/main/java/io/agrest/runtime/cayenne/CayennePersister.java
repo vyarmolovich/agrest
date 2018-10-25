@@ -1,8 +1,8 @@
 package io.agrest.runtime.cayenne;
 
-import org.apache.cayenne.ObjectContext;
-import org.apache.cayenne.configuration.server.ServerRuntime;
-import org.apache.cayenne.map.EntityResolver;
+import io.agrest.backend.ObjectContext;
+import io.agrest.backend.configuration.server.ServerRuntime;
+import io.agrest.backend.map.EntityResolver;
 
 public class CayennePersister implements ICayennePersister {
 

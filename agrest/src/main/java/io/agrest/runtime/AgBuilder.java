@@ -112,7 +112,7 @@ import io.agrest.runtime.semantics.IRelationshipMapper;
 import io.agrest.runtime.semantics.RelationshipMapper;
 import io.agrest.runtime.shutdown.ShutdownManager;
 import org.apache.cayenne.CayenneRuntimeException;
-import org.apache.cayenne.configuration.server.ServerRuntime;
+import io.agrest.backend.configuration.server.ServerRuntime;
 import org.apache.cayenne.di.DIBootstrap;
 import org.apache.cayenne.di.Injector;
 import org.apache.cayenne.di.Key;

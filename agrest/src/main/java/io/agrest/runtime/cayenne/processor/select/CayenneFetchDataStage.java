@@ -7,7 +7,7 @@ import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.cayenne.ICayennePersister;
 import io.agrest.runtime.processor.select.SelectContext;
 import org.apache.cayenne.di.Inject;
-import org.apache.cayenne.query.SelectQuery;
+import io.agrest.backend.query.SelectQuery;
 
 import javax.ws.rs.core.Response;
 import java.util.List;

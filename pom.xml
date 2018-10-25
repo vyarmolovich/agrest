@@ -17,7 +17,7 @@
         <module>agrest-client</module>
         <module>agrest-sencha</module>
         <module>agrest-bom</module>
-        <module>agrest-docs</module>
+        <!--<module>agrest-docs</module>-->
         <module>agrest-openapi-designfirst</module>
         <module>agrest-openapi-designfirst-test</module>
     </modules>
@@ -195,11 +195,11 @@
                 <artifactId>cayenne-di</artifactId>
                 <version>${cayenne-version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.cayenne</groupId>
-                <artifactId>cayenne-server</artifactId>
-                <version>${cayenne-version}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.apache.cayenne</groupId>-->
+                <!--<artifactId>cayenne-server</artifactId>-->
+                <!--<version>${cayenne-version}</version>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>org.apache.derby</groupId>
                 <artifactId>derby</artifactId>

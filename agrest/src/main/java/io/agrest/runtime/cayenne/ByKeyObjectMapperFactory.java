@@ -3,7 +3,7 @@ package io.agrest.runtime.cayenne;
 import io.agrest.ObjectMapper;
 import io.agrest.ObjectMapperFactory;
 import io.agrest.runtime.processor.update.UpdateContext;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 
 /**
  * An {@link ObjectMapperFactory} that locates objects by the combination of FK

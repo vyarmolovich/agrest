@@ -2,13 +2,13 @@ package io.agrest;
 
 import javax.ws.rs.core.Response.Status;
 
-import org.apache.cayenne.exp.Expression;
-import org.apache.cayenne.exp.ExpressionFactory;
-import org.apache.cayenne.map.DbJoin;
-import org.apache.cayenne.map.DbRelationship;
-import org.apache.cayenne.map.EntityResolver;
-import org.apache.cayenne.map.ObjEntity;
-import org.apache.cayenne.map.ObjRelationship;
+import io.agrest.backend.exp.Expression;
+import io.agrest.backend.exp.ExpressionFactory;
+import io.agrest.backend.map.DbJoin;
+import io.agrest.backend.map.DbRelationship;
+import io.agrest.backend.map.EntityResolver;
+import io.agrest.backend.map.ObjEntity;
+import io.agrest.backend.map.ObjRelationship;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,7 +8,7 @@ import io.agrest.meta.Types;
 import io.agrest.meta.compiler.AgEntityCompiler;
 import io.agrest.runtime.cayenne.ICayennePersister;
 import org.apache.cayenne.di.Inject;
-import org.apache.cayenne.map.EntityResolver;
+import io.agrest.backend.map.EntityResolver;
 
 import javax.ws.rs.core.Response.Status;
 import java.lang.reflect.Type;

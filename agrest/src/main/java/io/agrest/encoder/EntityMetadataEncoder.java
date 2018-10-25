@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import io.agrest.ResourceEntity;
 import io.agrest.meta.AgAttribute;
 import io.agrest.meta.AgRelationship;
-import org.apache.cayenne.dba.TypesMapping;
+import io.agrest.backend.dba.TypesMapping;
 
 import java.io.IOException;
 import java.util.Map;

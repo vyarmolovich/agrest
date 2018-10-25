@@ -1,7 +1,7 @@
 package io.agrest.property;
 
-import org.apache.cayenne.reflect.Accessor;
-import org.apache.cayenne.reflect.PropertyUtils;
+import io.agrest.backend.reflect.Accessor;
+import io.agrest.backend.reflect.PropertyUtils;
 
 public class BeanPropertyReader implements PropertyReader {
 

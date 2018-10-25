@@ -1,10 +1,10 @@
 package io.agrest.meta.cayenne;
 
-import org.apache.cayenne.dba.TypesMapping;
-import org.apache.cayenne.exp.parser.ASTDbPath;
-import org.apache.cayenne.exp.parser.ASTPath;
-import org.apache.cayenne.map.DbAttribute;
-import org.apache.cayenne.map.ObjAttribute;
+import io.agrest.backend.dba.TypesMapping;
+import io.agrest.backend.exp.parser.ASTDbPath;
+import io.agrest.backend.exp.parser.ASTPath;
+import io.agrest.backend.map.DbAttribute;
+import io.agrest.backend.map.ObjAttribute;
 
 /**
  * @since 1.12

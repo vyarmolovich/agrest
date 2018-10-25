@@ -11,15 +11,15 @@ import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.cayenne.processor.Util;
 import io.agrest.runtime.meta.IMetadataService;
 import io.agrest.runtime.processor.update.UpdateContext;
-import org.apache.cayenne.Cayenne;
-import org.apache.cayenne.DataObject;
-import org.apache.cayenne.ObjectContext;
-import org.apache.cayenne.map.DbAttribute;
-import org.apache.cayenne.map.DbEntity;
-import org.apache.cayenne.map.ObjAttribute;
-import org.apache.cayenne.map.ObjEntity;
-import org.apache.cayenne.map.ObjRelationship;
-import org.apache.cayenne.reflect.ClassDescriptor;
+import io.agrest.backend.Backend;
+import io.agrest.backend.DataObject;
+import io.agrest.backend.ObjectContext;
+import io.agrest.backend.map.DbAttribute;
+import io.agrest.backend.map.DbEntity;
+import io.agrest.backend.map.ObjAttribute;
+import io.agrest.backend.map.ObjEntity;
+import io.agrest.backend.map.ObjRelationship;
+import io.agrest.backend.reflect.ClassDescriptor;
 
 import javax.ws.rs.core.Response;
 import java.util.Collection;
@@ -212,12 +212,12 @@ public abstract class CayenneUpdateDataStoreStage implements Processor<UpdateCon
             relator.unrelateAll(agRelationship, o, new RelationshipUpdate() {
                 @Override
                 public boolean containsRelatedObject(DataObject relatedObject) {
-                    return relatedIds.contains(Cayenne.pkForObject(relatedObject));
+                    return relatedIds.contains(Backend.pkForObject(relatedObject));
                 }
 
                 @Override
                 public void removeUpdateForRelatedObject(DataObject relatedObject) {
-                    relatedIds.remove(Cayenne.pkForObject(relatedObject));
+                    relatedIds.remove(Backend.pkForObject(relatedObject));
                 }
             });
 
@@ -227,7 +227,7 @@ public abstract class CayenneUpdateDataStoreStage implements Processor<UpdateCon
                     continue;
                 }
 
-                DataObject related = (DataObject) Cayenne.objectForPK(context, relatedDescriptor.getObjectClass(),
+                DataObject related = (DataObject) Backend.objectForPK(context, relatedDescriptor.getObjectClass(),
                         relatedId);
 
                 if (related == null) {

@@ -9,7 +9,7 @@ import io.agrest.meta.AgAttribute;
 import io.agrest.meta.AgRelationship;
 import io.agrest.runtime.encoder.IAttributeEncoderFactory;
 import io.agrest.runtime.encoder.IStringConverterFactory;
-import org.apache.cayenne.exp.Expression;
+import io.agrest.backend.exp.Expression;
 
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;

@@ -12,7 +12,7 @@ import io.agrest.SizeConstraints;
 import io.agrest.constraints.Constraint;
 import io.agrest.encoder.Encoder;
 import io.agrest.processor.BaseProcessingContext;
-import org.apache.cayenne.query.SelectQuery;
+import io.agrest.backend.query.SelectQuery;
 
 import javax.ws.rs.core.UriInfo;
 import java.util.Collections;

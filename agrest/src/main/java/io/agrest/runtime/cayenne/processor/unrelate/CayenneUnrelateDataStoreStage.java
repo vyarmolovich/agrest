@@ -6,13 +6,13 @@ import io.agrest.processor.Processor;
 import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.meta.IMetadataService;
 import io.agrest.runtime.processor.unrelate.UnrelateContext;
-import org.apache.cayenne.Cayenne;
-import org.apache.cayenne.DataObject;
-import org.apache.cayenne.ObjectContext;
-import org.apache.cayenne.ObjectId;
+//import io.agrest.backend.Cayenne;
+import io.agrest.backend.DataObject;
+import io.agrest.backend.ObjectContext;
+import io.agrest.backend.ObjectId;
 import org.apache.cayenne.di.Inject;
-import org.apache.cayenne.map.ObjEntity;
-import org.apache.cayenne.query.ObjectIdQuery;
+import io.agrest.backend.map.ObjEntity;
+//import io.agrest.backend.query.ObjectIdQuery;
 
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
@@ -140,9 +140,12 @@ public class CayenneUnrelateDataStoreStage implements Processor<UnrelateContext<
         // TODO: should we start using optimistic locking on PK by default
         // instead of SELECT/DELETE|UPDATE?
 
-        String idName = entity.getPrimaryKeyNames().iterator().next();
-        ObjectIdQuery select = new ObjectIdQuery(new ObjectId(entity.getName(), idName, id));
-
-        return Cayenne.objectForQuery(context, select);
+// TODO: Refactoring to use ObjectMapper
+//
+//        String idName = entity.getPrimaryKeyNames().iterator().next();
+//        ObjectIdQuery select = new ObjectIdQuery(new ObjectId(entity.getName(), idName, id));
+//
+//        return Cayenne.objectForQuery(context, select);
+        return null;
     }
 }

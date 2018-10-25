@@ -8,11 +8,11 @@ import io.agrest.meta.AgEntity;
 import io.agrest.runtime.cayenne.ByIdObjectMapperFactory;
 import io.agrest.runtime.meta.IMetadataService;
 import io.agrest.runtime.processor.update.UpdateContext;
-import org.apache.cayenne.DataObject;
+import io.agrest.backend.DataObject;
 import org.apache.cayenne.di.Inject;
-import org.apache.cayenne.exp.Expression;
-import org.apache.cayenne.exp.ExpressionFactory;
-import org.apache.cayenne.query.SelectQuery;
+import io.agrest.backend.exp.Expression;
+import io.agrest.backend.exp.ExpressionFactory;
+import io.agrest.backend.query.SelectQuery;
 
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;

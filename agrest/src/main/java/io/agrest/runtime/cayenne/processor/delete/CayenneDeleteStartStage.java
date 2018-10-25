@@ -5,7 +5,7 @@ import io.agrest.processor.Processor;
 import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.cayenne.ICayennePersister;
 import io.agrest.runtime.processor.delete.DeleteContext;
-import org.apache.cayenne.ObjectContext;
+import io.agrest.backend.ObjectContext;
 import org.apache.cayenne.di.Inject;
 
 /**

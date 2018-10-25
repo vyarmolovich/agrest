@@ -12,12 +12,12 @@ import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.cayenne.ICayennePersister;
 import io.agrest.runtime.processor.select.SelectContext;
 import org.apache.cayenne.di.Inject;
-import org.apache.cayenne.exp.Expression;
-import org.apache.cayenne.exp.ExpressionFactory;
-import org.apache.cayenne.map.EntityResolver;
-import org.apache.cayenne.query.Ordering;
-import org.apache.cayenne.query.PrefetchTreeNode;
-import org.apache.cayenne.query.SelectQuery;
+import io.agrest.backend.exp.Expression;
+import io.agrest.backend.exp.ExpressionFactory;
+import io.agrest.backend.map.EntityResolver;
+import io.agrest.backend.query.Ordering;
+import io.agrest.backend.query.PrefetchTreeNode;
+import io.agrest.backend.query.SelectQuery;
 
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;

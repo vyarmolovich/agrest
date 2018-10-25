@@ -2,7 +2,7 @@ package io.agrest.meta;
 
 import java.util.Collection;
 
-import org.apache.cayenne.map.ObjEntity;
+import io.agrest.backend.map.ObjEntity;
 
 /**
  * An entity model shared across AgREST stack.

@@ -2,7 +2,7 @@ package io.agrest.runtime.processor.select;
 
 import io.agrest.processor.Processor;
 import io.agrest.processor.ProcessorOutcome;
-import org.apache.cayenne.query.PrefetchTreeNode;
+import io.agrest.backend.query.PrefetchTreeNode;
 
 /**
  * @since 2.7
