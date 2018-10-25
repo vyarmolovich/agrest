@@ -4,7 +4,7 @@ import io.agrest.backend.ObjectContext;
 import io.agrest.backend.map.EntityResolver;
 
 /**
- * A placeholder for {@link ICayennePersister} for AgREST containers that work
+ * A placeholder for {@link ICayennePersister} for Agrest containers that work
  * with POJOs.
  */
 public final class NoCayennePersister implements ICayennePersister {

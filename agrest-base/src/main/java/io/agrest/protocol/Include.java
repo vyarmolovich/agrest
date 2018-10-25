@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents 'include' AgREST protocol parameter.
+ * Represents 'include' Agrest protocol parameter.
  *
  * @since 2.13
  */
@@ -27,13 +27,14 @@ public class Include {
         this.includes = includes;
     }
 
-    public Include(CayenneExp cayenneExp, Sort sort, MapBy mapBy, String path, Start start, Limit limit) {
+    public Include(CayenneExp cayenneExp, Sort sort, MapBy mapBy, String path, Start start, Limit limit, List<Include> includes) {
         this.cayenneExp = cayenneExp;
         this.sort = sort;
         this.mapBy = mapBy;
         this.path = path;
         this.start = start;
         this.limit = limit;
+        this.includes = includes;
     }
 
     public String getValue() {
