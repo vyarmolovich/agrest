@@ -4,6 +4,7 @@ import io.agrest.backend.exp.parser.ASTDbPath;
 import io.agrest.backend.exp.parser.ASTEqual;
 import io.agrest.backend.exp.parser.ASTObjPath;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.lang.reflect.Constructor;
@@ -179,6 +180,8 @@ public class ExpressionFactory {
             protected void flattenTree() { }
             @Override
             public Object evaluate(Object o) { return null; }
+            @Override
+            public void appendAsString(Appendable out) throws IOException { }
         };
     }
 }

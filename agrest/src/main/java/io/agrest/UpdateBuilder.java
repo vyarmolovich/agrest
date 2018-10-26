@@ -4,7 +4,7 @@ import io.agrest.constraints.Constraint;
 import io.agrest.processor.Processor;
 import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.processor.update.UpdateContext;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 
 import javax.ws.rs.core.UriInfo;
 import java.util.Collection;

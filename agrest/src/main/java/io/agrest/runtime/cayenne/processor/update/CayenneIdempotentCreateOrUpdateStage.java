@@ -4,7 +4,7 @@ import io.agrest.AgException;
 import io.agrest.EntityUpdate;
 import io.agrest.runtime.meta.IMetadataService;
 import io.agrest.runtime.processor.update.UpdateContext;
-import org.apache.cayenne.DataObject;
+import io.agrest.backend.DataObject;
 import org.apache.cayenne.di.Inject;
 
 import javax.ws.rs.core.Response;

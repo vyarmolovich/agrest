@@ -15,4 +15,9 @@ public interface ObjRelationship {
     List<DbRelationship> getDbRelationships();
 
     String getTargetEntityName();
+
+    /**
+     * Returns a reversed dbRelationship path.
+     */
+    String getReverseDbRelationshipPath();
 }

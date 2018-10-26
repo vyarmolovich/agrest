@@ -3,7 +3,7 @@ package io.agrest;
 import java.util.Collection;
 import java.util.Map;
 
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 
 /**
  * @since 1.4

@@ -14,7 +14,7 @@ import io.agrest.processor.Processor;
 import io.agrest.runtime.cayenne.ByKeyObjectMapperFactory;
 import io.agrest.runtime.processor.update.UpdateContext;
 import io.agrest.runtime.processor.update.UpdateProcessorFactory;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;

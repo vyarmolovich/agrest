@@ -4,8 +4,8 @@ import io.agrest.EntityUpdate;
 import io.agrest.processor.Processor;
 import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.processor.update.UpdateContext;
-import org.apache.cayenne.DataObject;
-import org.apache.cayenne.ObjectId;
+import io.agrest.backend.DataObject;
+import io.agrest.backend.ObjectId;
 
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;

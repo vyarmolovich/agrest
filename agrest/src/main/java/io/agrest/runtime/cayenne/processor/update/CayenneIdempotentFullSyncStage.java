@@ -5,10 +5,10 @@ import io.agrest.EntityUpdate;
 import io.agrest.ObjectMapper;
 import io.agrest.runtime.meta.IMetadataService;
 import io.agrest.runtime.processor.update.UpdateContext;
-import org.apache.cayenne.DataObject;
+import io.agrest.backend.DataObject;
 import org.apache.cayenne.di.Inject;
-import org.apache.cayenne.map.EntityResolver;
-import org.apache.cayenne.query.SelectQuery;
+import io.agrest.backend.map.EntityResolver;
+import io.agrest.backend.query.SelectQuery;
 
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;

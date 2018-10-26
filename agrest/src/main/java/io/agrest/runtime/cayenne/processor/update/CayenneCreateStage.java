@@ -2,7 +2,7 @@ package io.agrest.runtime.cayenne.processor.update;
 
 import io.agrest.runtime.meta.IMetadataService;
 import io.agrest.runtime.processor.update.UpdateContext;
-import org.apache.cayenne.DataObject;
+import io.agrest.backend.DataObject;
 import org.apache.cayenne.di.Inject;
 
 /**

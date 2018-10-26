@@ -7,7 +7,7 @@ import io.agrest.AgObjectId;
 import io.agrest.SimpleResponse;
 import io.agrest.runtime.processor.delete.DeleteContext;
 import io.agrest.runtime.processor.delete.DeleteProcessorFactory;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 
 import javax.ws.rs.core.Response;
 import java.util.Collection;
