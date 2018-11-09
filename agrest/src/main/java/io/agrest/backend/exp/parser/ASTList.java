@@ -42,6 +42,13 @@ public class ASTList extends SimpleNode {
         }
     }
 
+    /**
+     * Gets an internal collection of values.
+     */
+    public Object[] getValues() {
+        return values;
+    }
+
 
     @Override
     public Expression shallowCopy() {

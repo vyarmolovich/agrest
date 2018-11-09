@@ -62,6 +62,14 @@ public abstract class SimpleNode extends Expression implements Node {
     }
 
     /**
+     * Implemented for backwards compatibility with exp package.
+     */
+    @Override
+    public String expName() {
+        return ExpressionParserTreeConstants.jjtNodeName[id];
+    }
+
+    /**
      * Flattens the tree under this node by eliminating any children that are of
      * the same class as this node and copying their children to this node.
      */
