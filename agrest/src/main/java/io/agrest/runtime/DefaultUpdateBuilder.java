@@ -14,7 +14,7 @@ import io.agrest.processor.Processor;
 import io.agrest.runtime.cayenne.ByKeyObjectMapperFactory;
 import io.agrest.runtime.processor.update.UpdateContext;
 import io.agrest.runtime.processor.update.UpdateProcessorFactory;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -136,10 +136,9 @@ public class DefaultUpdateBuilder<T> implements UpdateBuilder<T> {
     /**
      * @since 1.20
      */
-    // TODO: Do we really need a Cayenne Property here?
     @Override
     public UpdateBuilder<T> mapper(Property<?> property) {
-        return mapper(ByKeyObjectMapperFactory.byKey(property));
+        return mapper(ByKeyObjectMapperFactory.byKey(property.getName()));
     }
 
     /**

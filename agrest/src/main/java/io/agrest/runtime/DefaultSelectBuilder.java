@@ -14,7 +14,7 @@ import io.agrest.processor.Processor;
 import io.agrest.property.PropertyBuilder;
 import io.agrest.runtime.processor.select.SelectContext;
 import io.agrest.runtime.processor.select.SelectProcessorFactory;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -4,7 +4,7 @@ import io.agrest.PathConstants;
 import io.agrest.meta.AgEntity;
 import io.agrest.meta.AgRelationship;
 import io.agrest.backend.exp.Expression;
-import org.apache.cayenne.exp.Property;
+import io.agrest.backend.exp.Property;
 
 import java.util.List;
 import java.util.function.Function;
