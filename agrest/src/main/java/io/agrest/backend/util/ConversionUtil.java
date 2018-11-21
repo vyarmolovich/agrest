@@ -1,6 +1,9 @@
 package io.agrest.backend.util;
 
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+
 public final class ConversionUtil {
 
     public static int toInt(Object object, int defaultValue) {
@@ -151,6 +154,30 @@ public final class ConversionUtil {
         } else { // It is NOT an array, so use regular equals()
             return o1.equals(o2);
         }
+    }
+
+    /**
+     * Retrieves a Property Value of Object by provided Path
+     * @param object target Object
+     * @param path Path to the Property
+     * @return a Value of the Property
+     */
+    public static Object getValueByPath(Object object, String path) {
+        Object value = object;
+        String[] props = path.split("\\.");
+        try {
+            for (String property : props) {
+                value = Arrays.stream(value.getClass().getMethods())
+                        .filter(m -> ("get" + property).equalsIgnoreCase(m.getName()))
+                        .findAny()
+                        .get()
+                        .invoke(value);
+            }
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            // do nothing, we expect this
+        }
+
+        return value;
     }
 
     private ConversionUtil() {

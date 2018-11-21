@@ -1,8 +1,8 @@
 package io.agrest.encoder;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import org.apache.cayenne.exp.Expression;
-import org.apache.cayenne.query.Ordering;
+import io.agrest.backend.exp.Expression;
+import io.agrest.backend.query.Ordering;
 
 import java.io.IOException;
 import java.util.ArrayList;

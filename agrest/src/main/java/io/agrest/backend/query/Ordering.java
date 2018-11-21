@@ -27,26 +27,26 @@ public class Ordering implements Comparator<Object> {
     protected boolean nullSortedFirst = true;
 
 
-//    /**
-//     * Orders a given list of objects, using a List of Orderings applied
-//     * according the default iteration order of the Orderings list. I.e. each
-//     * Ordering with lower index is more significant than any other Ordering
-//     * with higher index. List being ordered is modified in place.
-//     *
-//     * @param objects elements to sort
-//     * @param orderings list of Orderings to be applied
-//     */
-//    @SuppressWarnings("unchecked")
-//    public static void orderList(List<?> objects, List<? extends Ordering> orderings) {
-//        if(objects == null || orderings == null || orderings.isEmpty()) {
-//            return;
-//        }
-//        Comparator<Object> comparator = (Comparator<Object>) orderings.get(0);
-//        for(int i=1; i<orderings.size(); i++) {
-//            comparator = comparator.thenComparing((Comparator<? super Object>) orderings.get(i));
-//        }
-//        objects.sort(comparator);
-//    }
+    /**
+     * Orders a given list of objects, using a List of Orderings applied
+     * according the default iteration order of the Orderings list. I.e. each
+     * Ordering with lower index is more significant than any other Ordering
+     * with higher index. List being ordered is modified in place.
+     *
+     * @param objects elements to sort
+     * @param orderings list of Orderings to be applied
+     */
+    @SuppressWarnings("unchecked")
+    public static void orderList(List<?> objects, List<? extends Ordering> orderings) {
+        if(objects == null || orderings == null || orderings.isEmpty()) {
+            return;
+        }
+        Comparator<Object> comparator = (Comparator<Object>) orderings.get(0);
+        for(int i=1; i<orderings.size(); i++) {
+            comparator = comparator.thenComparing((Comparator<? super Object>) orderings.get(i));
+        }
+        objects.sort(comparator);
+    }
 
     /**
      * Orders the given list of objects according to the ordering that this
@@ -98,27 +98,8 @@ public class Ordering implements Comparator<Object> {
     public int compare(Object o1, Object o2) {
         Expression exp = getSortSpec();
 
-        Object value1 = null;
-        Object value2 = null;
-        try {
-            value1 = Arrays.stream(o1.getClass().getMethods())
-                            .filter(m -> ("get" + exp.toString()).equalsIgnoreCase(m.getName()))
-                            .findAny()
-                            .get()
-                            .invoke(o1);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-                // do nothing, we expect this
-        }
-
-        try {
-            value2 = Arrays.stream(o2.getClass().getMethods())
-                            .filter(m -> ("get" + exp.toString()).equalsIgnoreCase(m.getName()))
-                            .findAny()
-                            .get()
-                            .invoke(o2);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            // do nothing, we expect this
-        }
+        Object value1 = ConversionUtil.getValueByPath(o1, exp.toString());
+        Object value2 = ConversionUtil.getValueByPath(o2, exp.toString());
 
         if (value1 == null && value2 == null) {
             return 0;
@@ -228,5 +209,4 @@ public class Ordering implements Comparator<Object> {
         result = 31 * result + (nullSortedFirst ? 1 : 0);
         return result;
     }
-
 }
