@@ -46,7 +46,7 @@ public class ResourceEntity<T> {
     private boolean filtered;
 
     private SelectQuery<T> select;
-    private List result;
+    private List<AgObject> result;
 
     public ResourceEntity(AgEntity<T> agEntity) {
         this.idIncluded = false;
@@ -108,11 +108,11 @@ public class ResourceEntity<T> {
         this.select = select;
     }
 
-    public List<T> getResult() {
+    public List<AgObject> getResult() {
         return result;
     }
 
-    public void setResult(List<? extends T> objects) {
+    public void setResult(List<AgObject> objects) {
         this.result = objects;
     }
 

@@ -16,6 +16,7 @@ public class DataResponse<T> extends AgResponse {
 
     private Class<T> type;
     private List objects;
+    private List<AgObject> agObjects;
     private Encoder encoder;
 
     public static <T> DataResponse<T> forObject(T object) {
@@ -48,6 +49,7 @@ public class DataResponse<T> extends AgResponse {
         this.type = type;
         this.encoder = GenericEncoder.encoder();
         this.objects = Collections.emptyList();
+        this.agObjects = Collections.emptyList();
     }
 
     public Class<T> getType() {
@@ -79,6 +81,18 @@ public class DataResponse<T> extends AgResponse {
         return objects;
     }
 
+    public List<AgObject> getAgObjects() {
+        return agObjects;
+    }
+
+    public void setAgObject(AgObject agObject) {
+        setAgObjects(Collections.singletonList(agObject));
+    }
+
+    public void setAgObjects(List<AgObject> agObjects) {
+        this.agObjects = agObjects;
+    }
+
     /**
      * Returns a collection of objects associated with the root node of the
      * request include tree. Unlike {@link #getObjects()}, the result only
@@ -102,7 +116,8 @@ public class DataResponse<T> extends AgResponse {
     public <U> Collection<U> getIncludedObjects(Class<U> type, String path) {
 
         DataResponseFlattenExtractor<U> extractor = new DataResponseFlattenExtractor<>(path);
-        encoder.visitEntities(objects, extractor);
+//        encoder.visitEntities(objects, extractor);
+        encoder.visitEntities(agObjects, extractor);
         return extractor.getResult();
     }
 
@@ -118,6 +133,7 @@ public class DataResponse<T> extends AgResponse {
      * {@link Encoder}.
      */
     public void writeData(JsonGenerator out) throws IOException {
-        encoder.encode(null, getObjects(), out);
+//        encoder.encode(null, getObjects(), out);
+        encoder.encode(null, getAgObjects(), out);
     }
 }

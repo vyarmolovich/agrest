@@ -2,6 +2,7 @@ package io.agrest;
 
 import io.agrest.meta.AgAttribute;
 import io.agrest.parser.converter.Normalizer;
+import org.apache.cayenne.ObjectId;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -45,5 +46,18 @@ public class SimpleObjectId extends BaseObjectId {
 	@Override
 	public String toString() {
 		return id.toString();
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (this == object) {
+			return true;
+		}
+
+		if (!(object instanceof SimpleObjectId)) {
+			return false;
+		}
+
+		return id.equals(((SimpleObjectId)object).get());
 	}
 }

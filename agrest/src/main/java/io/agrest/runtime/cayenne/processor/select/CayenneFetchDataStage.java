@@ -1,14 +1,22 @@
 package io.agrest.runtime.cayenne.processor.select;
 
 import io.agrest.AgException;
+import io.agrest.AgObject;
+import io.agrest.AgObjectId;
+import io.agrest.BaseObject;
+import io.agrest.CompoundObjectId;
 import io.agrest.ResourceEntity;
+import io.agrest.SimpleObjectId;
+import io.agrest.meta.AgAttribute;
 import io.agrest.meta.AgEntity;
 import io.agrest.meta.AgRelationship;
+import io.agrest.meta.DefaultAgAttribute;
 import io.agrest.processor.Processor;
 import io.agrest.processor.ProcessorOutcome;
 import io.agrest.runtime.cayenne.ICayennePersister;
 import io.agrest.runtime.processor.select.SelectContext;
 import org.apache.cayenne.CayenneDataObject;
+import org.apache.cayenne.ObjectId;
 import org.apache.cayenne.di.Inject;
 import org.apache.cayenne.query.SelectQuery;
 
@@ -54,6 +62,9 @@ public class CayenneFetchDataStage implements Processor<SelectContext<?>> {
                         "Found more than one object for ID '%s' and entity '%s'", context.getId(), entity.getName()));
             }
         }
+
+        context.setAgObjects(context.getEntity().getResult());
+
         context.setObjects(objects);
     }
 
@@ -62,44 +73,96 @@ public class CayenneFetchDataStage implements Processor<SelectContext<?>> {
 
         List<T> objects = persister.sharedContext().select(select);
 
+        resourceEntity.setResult(toAgObjects(objects, resourceEntity.getAgEntity()));
+
         if (!resourceEntity.getChildren().isEmpty()) {
             for (Map.Entry<String, ResourceEntity<?>> e : resourceEntity.getChildren().entrySet()) {
-                ResourceEntity child = e.getValue();
+                ResourceEntity childEntity = e.getValue();
 
-                List childObjects = fetchEntity(child);
+                List childObjects = fetchEntity(childEntity);
 
-                AgRelationship relationship = resourceEntity.getAgEntity().getRelationship(child.getAgEntity());
-                assignChildrenToParent(objects, relationship, childObjects);
+                assignChildrenToParent(resourceEntity, childEntity, childObjects);
             }
         }
 
-        resourceEntity.setResult(objects);
         return objects;
     }
 
     // Assigns child items to the appropriate parent item
-    protected <T> List<T> assignChildrenToParent(List<T> parents, AgRelationship relationship, List children) {
+    protected <T> void assignChildrenToParent(ResourceEntity<T> resourceEntity, ResourceEntity childEntity, List children) {
 
-        for (T parent : parents) {
-            if (parent instanceof CayenneDataObject) {
-                List relations = new ArrayList();
+        AgRelationship relationship = resourceEntity.getAgEntity().getRelationship(childEntity.getAgEntity());
+        AgAttribute childrenId = new DefaultAgAttribute(relationship.getName(), List.class);
 
-                for (Object child : children) {
+        for (AgObject parent : resourceEntity.getResult()) {
+                for (int i = 0; i < children.size(); i++) {
+                    Object child = children.get(i);
                     if (child instanceof Object[]) {
-                        for (Object childRelation : (Object[])child) {
-                            if (childRelation.equals(parent)) {
-                                relations.add(((Object[])child)[0]);
+                        Object[] ids = (Object[])child;
+                        for (Object id : ids) {
+                            if (!(id instanceof CayenneDataObject) && parent.getId().get().equals(id)) {
+                                if (!childEntity.getResult().isEmpty() && childEntity.getResult().size() > i) {
+                                    parent.addChild(childrenId, (AgObject) childEntity.getResult().get(i));
+                                } else {
+                                    parent.addChild(childrenId, toAgObject((CayenneDataObject) ids[0], childEntity.getAgEntity()));
+                                }
+//                                AgObjectId agObjectId = toAgObjectId(((CayenneDataObject)ids[0]).getObjectId());
+//                                   for (AgObject agObject : (List<AgObject>)childEntity.getResult()) {
+//                                       if (agObject.getId().equals(agObjectId)) {
+//                                           parent.addChild(childrenId, agObject);
+//                                       }
+//                                   }
                             }
                         }
                     }
                 }
-                ((CayenneDataObject) parent).writePropertyDirectly(
-                        relationship.getName(),
-                        relationship.isToMany() ? relations : relations.isEmpty() ? null : relations.iterator().next());
 
-            }
+
+//                ((CayenneDataObject) parent).writePropertyDirectly(
+//                        relationship.getName(),
+//                        relationship.isToMany() ? relations : relations.isEmpty() ? null : relations.iterator().next());
+
         }
 
-        return parents;
+//        return parents;
+    }
+
+    private <T> List<AgObject> toAgObjects(List<T> objects, AgEntity<T> entity) {
+        List<AgObject> result = new ArrayList<>();
+
+        for (T t : objects) {
+            CayenneDataObject dataObject = null;
+            if (t instanceof CayenneDataObject) {
+                dataObject = (CayenneDataObject)t;
+            } else if (t instanceof Object[] && ((Object[])t)[0] instanceof CayenneDataObject) {
+                dataObject = (CayenneDataObject)((Object[])t)[0];
+            }
+
+            result.add(toAgObject(dataObject, entity));
+        }
+
+        return result;
+    }
+
+    private <T> AgObject toAgObject(CayenneDataObject object, AgEntity<T> entity) {
+        if (object == null) {
+            return null;
+        }
+
+        AgObject agObject = new BaseObject(toAgObjectId(object.getObjectId()));
+
+        for (AgAttribute attribute : entity.getAttributes()) {
+            agObject.addAttribute(attribute, object.readProperty(attribute.getName()));
+        }
+
+        return agObject;
+    }
+
+    private AgObjectId toAgObjectId(ObjectId objectId) {
+        Map<String, Object> ids = objectId.getIdSnapshot();
+
+        return ids.size() == 1
+                ? new SimpleObjectId(ids.values().iterator().next())
+                : new CompoundObjectId(ids);
     }
 }

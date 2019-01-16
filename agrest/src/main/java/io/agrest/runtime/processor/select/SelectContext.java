@@ -1,5 +1,6 @@
 package io.agrest.runtime.processor.select;
 
+import io.agrest.AgObject;
 import io.agrest.AgRequest;
 import io.agrest.CompoundObjectId;
 import io.agrest.DataResponse;
@@ -35,6 +36,7 @@ public class SelectContext<T> extends BaseProcessingContext<T> {
 	private boolean atMostOneObject;
 	private Encoder encoder;
 	private List objects;
+	private List<AgObject> agObjects;
 	private AgRequest rawRequest;
 	private AgRequest request;
 
@@ -51,8 +53,12 @@ public class SelectContext<T> extends BaseProcessingContext<T> {
 	 */
 	public DataResponse<T> createDataResponse() {
 		List<? extends T> objects = this.objects != null ? this.objects : Collections.<T> emptyList();
+
+		List<AgObject> agObjects = this.agObjects != null ? this.agObjects : Collections.emptyList();
+
 		DataResponse<T> response = DataResponse.forType(getType());
 		response.setObjects(objects);
+		response.setAgObjects(agObjects);
 		response.setEncoder(encoder);
 		response.setStatus(getStatus());
 		return response;
@@ -172,6 +178,14 @@ public class SelectContext<T> extends BaseProcessingContext<T> {
 	 */
 	public void setObjects(List<? extends T> objects) {
 		this.objects = objects;
+	}
+
+	public List<AgObject> getAgObjects() {
+		return agObjects;
+	}
+
+	public void setAgObjects(List<AgObject> agObjects) {
+		this.agObjects = agObjects;
 	}
 
 	/**
